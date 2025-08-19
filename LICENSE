@@ -1,0 +1,19 @@
+Placeholder License
+===================
+
+This repository currently has a placeholder license file.
+
+Please replace this file with the full text of the license you want
+to apply to the project. Common choices:
+
+- MIT: https://opensource.org/licenses/MIT
+- Apache-2.0: https://www.apache.org/licenses/LICENSE-2.0
+- GPL-3.0: https://www.gnu.org/licenses/gpl-3.0.en.html
+
+If you want a quick starter, you can add a short header like:
+
+  Copyright (c) YEAR OWNER
+  Licensed under the [LICENSE NAME] (see LICENSE for details)
+
+Or paste the full license text in this file. Replace YEAR and OWNER
+with the appropriate values for your project.
