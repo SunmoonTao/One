@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Daily Fact Card</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <main class="card">
+    <header>
+      <h1>{{ term.name }}</h1>
+      <div class="meta">Card {{ idx + 1 }} of {{ total }}</div>
+    </header>
+
+    <p class="desc">{{ term.description }}</p>
+
+    <blockquote class="fact">{{ term.fact }}</blockquote>
+
+    <footer>
+      <a href="{{ term.source }}" target="_blank">Source</a>
+      <div class="controls">
+        <a id="prev" href="/card/{{ (idx - 1) % total }}">Prev</a>
+        <a id="today" href="/">Today</a>
+        <a id="next" href="/card/{{ (idx + 1) % total }}">Next</a>
+      </div>
+      <div class="card-links" style="margin-top:12px">
+        <button id="openChatCopy" title="Copy prompt to clipboard and open ChatGPT">Open ChatGPT & copy prompt</button>
+      </div>
+    </footer>
+  </main>
+
+  <div id="llm" data-name="{{ term.name }}" data-desc="{{ term.description }}" data-fact="{{ term.fact }}" data-source="{{ term.source }}"></div>
+
+  <script>
+    // small enhancement: keyboard navigation
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowLeft') document.getElementById('prev').click();
+      if (e.key === 'ArrowRight') document.getElementById('next').click();
+    });
+
+    // Prepare LLM prompt and wire up combined action
+    (function(){
+      const el = document.getElementById('llm');
+      if (!el) return;
+      const name = el.dataset.name || '';
+      const desc = el.dataset.desc || '';
+      const fact = el.dataset.fact || '';
+      const source = el.dataset.source || '';
+
+      const prompt = `Summarize the gene ${name} in plain language for a non-expert. Provide a 2-3 sentence summary, 3 key facts, and suggested references/links. Use the following details:\n\nDescription: ${desc}\nFact: ${fact}\nSource: ${source}`;
+
+  // The button is now inside the card footer
+  const btn = document.getElementById('openChatCopy');
+      btn.addEventListener('click', async () => {
+        // Try to write to clipboard first
+        try {
+          await navigator.clipboard.writeText(prompt);
+          btn.textContent = 'Copied — opening ChatGPT\u2026';
+        } catch (err) {
+          // Fallback: open a small window with the prompt so user can copy
+          window.open('data:text/plain;charset=utf-8,' + encodeURIComponent(prompt));
+          btn.textContent = 'Opening ChatGPT\u2026';
+        }
+
+        // Open ChatGPT in a new tab; user can paste the prompt there
+        try {
+          window.open('https://chat.openai.com/', '_blank', 'noopener');
+        } catch (err) {
+          // ignore
+        }
+
+        // reset button text after a short delay
+        setTimeout(() => btn.textContent = 'Open ChatGPT & copy prompt', 2500);
+      });
+    })();
+  </script>
+</body>
+</html>

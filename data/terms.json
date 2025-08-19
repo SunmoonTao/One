@@ -1,0 +1,37 @@
+[
+  {
+    "id": "BRCA1",
+    "name": "BRCA1",
+    "description": "A human tumor suppressor gene involved in DNA repair.",
+    "fact": "Mutations in BRCA1 increase risk for breast and ovarian cancer.",
+    "source": "https://www.genecards.org/cgi-bin/carddisp.pl?gene=BRCA1"
+  },
+  {
+    "id": "TP53",
+    "name": "TP53",
+    "description": "Encodes p53, a protein that regulates the cell cycle and prevents genome mutation.",
+    "fact": "TP53 is one of the most commonly mutated genes in human cancers.",
+    "source": "https://www.genecards.org/cgi-bin/carddisp.pl?gene=TP53"
+  },
+  {
+    "id": "EGFR",
+    "name": "EGFR",
+    "description": "Epidermal growth factor receptor, a receptor tyrosine kinase.",
+    "fact": "EGFR mutations or amplifications are found in several cancers and are drug targets.",
+    "source": "https://www.genecards.org/cgi-bin/carddisp.pl?gene=EGFR"
+  },
+  {
+    "id": "APOE",
+    "name": "APOE",
+    "description": "Apolipoprotein E, involved in lipid metabolism and neuronal repair.",
+    "fact": "The APOE ε4 allele is associated with higher risk of Alzheimer's disease.",
+    "source": "https://www.genecards.org/cgi-bin/carddisp.pl?gene=APOE"
+  },
+  {
+    "id": "CFTR",
+    "name": "CFTR",
+    "description": "Cystic fibrosis transmembrane conductance regulator, an ion channel.",
+    "fact": "Mutations in CFTR cause cystic fibrosis.",
+    "source": "https://www.genecards.org/cgi-bin/carddisp.pl?gene=CFTR"
+  }
+]
